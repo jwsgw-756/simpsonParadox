@@ -109,15 +109,30 @@ This is Simpson's Paradox in action. The species variable is a **confounding var
 
 **🎯 Your Task:** Use Cursor's AI assistant to create a compelling side-by-side comparison plot!
 
-**Instructions:**
-1. Ask Cursor: *"Create a side-by-side comparison plot using patchwork that combines plot1 and plot2 with a title, subtitle, and caption explaining Simpson's Paradox"*
-2. The plot should clearly show the contrast between the overall relationship and the species-specific relationships
-3. Use `theme_minimal(16)` for consistency
-4. **Replace these instructions with the actual plot code that Cursor generates**
-5. **Render the README.md file** using `quarto render README.qmd`
-6. Make sure to sync your changes to your GitHub folder for grading!
+Now let's create a powerful side-by-side comparison that makes Simpson's Paradox crystal clear:
 
-**What you should see:** A powerful visualization that makes Simpson's Paradox crystal clear - the same data telling two completely different stories depending on whether we consider the species grouping variable.
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Side-by-Side Comparison: The Power of Simpson's Paradox"
+
+# Create the side-by-side comparison using patchwork
+side_by_side_plot <- (plot1 | plot2) +
+  plot_annotation(
+    title = "Simpson's Paradox: The Same Data, Two Different Stories",
+    subtitle = "Left: Overall relationship (positive) | Right: Species-specific relationships (negative)",
+    caption = "This visualization demonstrates how aggregating data can completely reverse apparent relationships",
+    theme = theme(
+      plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 14, hjust = 0.5, color = "gray40"),
+      plot.caption = element_text(size = 12, hjust = 0, face = "italic", color = "gray60")
+    )
+  )
+
+side_by_side_plot
+```
+
+**What you should see:** A powerful visualization that makes Simpson's Paradox crystal clear - the same data telling two completely different stories depending on whether we consider the species grouping variable. The left panel shows the misleading positive relationship when we ignore species, while the right panel reveals the true negative relationships within each species.
 
 ## Key Takeaways: Lessons from Simpson's Paradox
 
